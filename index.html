@@ -1,8 +1,12 @@
 <div class="gallery" id="gallery"></div>
 <script>
-    const totalImages = 17; // تأكد أن هذا الرقم يطابق عدد صورك
+    const images = [
+        "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", 
+        "9.jpg", "10.jpg", "11.jpg", "12.jpg"
+    ];
+    
     const gallery = document.getElementById('gallery');
-    for (let i = 1; i <= totalImages; i++) {
-        gallery.innerHTML += '<img src="' + i + '.jpg">';
-    }
+    images.forEach(imgName => {
+        gallery.innerHTML += '<img src="' + imgName + '" style="width:100%; height:140px; object-fit:cover; border-radius:10px;">';
+    });
 </script>
