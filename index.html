@@ -2,19 +2,21 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        body { margin: 0; padding: 10px; font-family: sans-serif; }
         .gallery { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-            gap: 15px; 
-            padding: 15px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            justify-content: center; 
         }
         .gallery img { 
-            width: 100%; 
-            height: 200px; /* طول المربع */
-            object-fit: cover; /* دي أهم كلمة: بتخلي الصورة تغطي المربع بدون ما تتمط أو تبوظ */
-            border-radius: 10px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 45%; 
+            max-width: 200px; 
+            height: 150px; 
+            object-fit: cover; 
+            border-radius: 10px;
         }
     </style>
 </head>
