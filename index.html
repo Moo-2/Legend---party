@@ -1,12 +1,35 @@
-<div class="gallery" id="gallery"></div>
-<script>
-    const images = [
-        "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", 
-        "9.jpg", "10.jpg", "11.jpg", "12.jpg"
-    ];
-    
-    const gallery = document.getElementById('gallery');
-    images.forEach(imgName => {
-        gallery.innerHTML += '<img src="' + imgName + '" style="width:100%; height:140px; object-fit:cover; border-radius:10px;">';
-    });
-</script>
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 15px; 
+            padding: 15px; 
+        }
+        .gallery img { 
+            width: 100%; 
+            height: 200px; /* طول المربع */
+            object-fit: cover; /* دي أهم كلمة: بتخلي الصورة تغطي المربع بدون ما تتمط أو تبوظ */
+            border-radius: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery" id="gallery"></div>
+    <script>
+        const images = [
+            "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", 
+            "9.jpg", "10.jpg", "11.jpg", "12.jpg"
+        ];
+        
+        const gallery = document.getElementById('gallery');
+        images.forEach(imgName => {
+            gallery.innerHTML += '<img src="' + imgName + '">';
+        });
+    </script>
+</body>
+</html>
