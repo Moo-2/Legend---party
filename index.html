@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legend Party</title>
     <style>
-        body { margin: 0; padding: 10px; font-family: sans-serif; }
+        body { margin: 0; padding: 10px; font-family: sans-serif; background-color: #f4f4f4; }
+        h2 { text-align: center; color: #333; }
+        
+        /* تنسيق المعرض */
         .gallery { 
             display: flex; 
             flex-wrap: wrap; 
@@ -12,16 +16,38 @@
             justify-content: center; 
         }
         .gallery img { 
-            width: 45%; 
-            max-width: 200px; 
+            width: 45%; /* تصغير الصور لتناسب الشاشة */
+            max-width: 150px; /* تحديد أقصى عرض */
             height: 150px; 
             object-fit: cover; 
             border-radius: 10px;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* تنسيق زر الواتساب */
+        .btn-whatsapp { 
+            display: block; 
+            width: 80%; 
+            margin: 30px auto; 
+            padding: 15px; 
+            background-color: #25D366; 
+            color: white; 
+            text-align: center; 
+            text-decoration: none; 
+            border-radius: 25px; 
+            font-weight: bold; 
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
+
+    <h2>معرض صور Legend Party</h2>
     <div class="gallery" id="gallery"></div>
+
+    <a href="https://wa.me/201279792402" class="btn-whatsapp">تواصل معنا عبر واتساب</a>
+
     <script>
         const images = [
             "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", 
