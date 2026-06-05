@@ -11,7 +11,7 @@
             margin: 0; padding-bottom: 100px;
             background-image: url('30.jpg');
             background-repeat: repeat-y;
-            background-size: 100px auto; /* الكلاون في الجانب */
+            background-size: 80px auto;
             background-position: right top;
         }
         header { text-align: center; padding: 25px; background: rgba(255,255,255,0.9); border-bottom: 5px solid #ff7675; }
@@ -69,14 +69,15 @@
     function showStore() { document.getElementById('storeSection').style.display='block'; document.getElementById('packageSection').style.display='none'; }
     function showPackages() { document.getElementById('storeSection').style.display='none'; document.getElementById('packageSection').style.display='block'; }
 
+    // الترتيب الجديد حسب طلبك
     const store = [
-        { en: "FOAM PARTY", img: "17.jpg" },
-        { en: "BIRTHDAY", img: "20.jpg" },
-        { en: "CLOWN", img: "21.jpg" },
-        { en: "MASCOTS", img: "22.jpg" },
-        { en: "AFRICAN SHOW", img: "23.jpg" },
-        { en: "ENGAGEMENT", img: "24.jpg" },
-        { en: "JUMPERS", img: "25.jpg" }
+        { en: "FOAM PARTY", img: "17.jpg" }, // ثابت
+        { en: "BIRTHDAY", img: "20.jpg" },   // ثابت
+        { en: "MASCOTS", img: "1.jpg" },     // جديد
+        { en: "CLOWN", img: "2.jpg" },       // جديد
+        { en: "ENGAGEMENT", img: "3.jpg" },  // جديد
+        { en: "AFRICAN SHOW", img: "4.jpg" },// جديد
+        { en: "JUMPERS", img: "5.jpg" }      // جديد
     ];
 
     const menu = document.getElementById('menu');
