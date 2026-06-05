@@ -17,40 +17,44 @@
         header { text-align: center; padding: 25px; background: rgba(255,255,255,0.9); border-bottom: 5px solid #ff7675; }
         .logo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #ff7675; }
         .slogan { color: #d63031; font-weight: bold; margin-top: 5px; font-style: italic; }
-
-        .section-title { padding: 20px 15px; font-size: 20px; font-weight: bold; color: #d63031; text-align: center; }
+        
+        /* تزيين العناوين */
+        .section-title { padding: 20px 15px; font-size: 22px; font-weight: bold; color: #d63031; text-align: center; text-shadow: 1px 1px 2px #fff; }
         
         .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px; }
-        .box { background: white; padding: 10px; border-radius: 20px; text-align: center; box-shadow: 0 8px 0 #fab1a0; }
+        .box { background: white; padding: 10px; border-radius: 20px; text-align: center; box-shadow: 0 8px 0 #fab1a0; transition: 0.3s; }
+        .box:hover { transform: scale(1.05); }
         .box img { width: 100%; height: 110px; object-fit: cover; border-radius: 15px; }
 
+        /* باقات احترافية */
         .pkg { background: #74b9ff; color: white; padding: 20px; margin: 10px 15px; border-radius: 20px; text-align: center; font-weight: bold; border: 3px dashed white; }
         .pkg.vip { background: #fdcb6e; }
         .pkg.legend { background: #e17055; }
 
+        /* أزرار التواصل */
         .contact-bar { display: flex; gap: 10px; padding: 15px; }
         .whatsapp-btn { flex: 3; background: #25D366; color: white; padding: 15px; border-radius: 50px; text-align: center; font-weight: bold; text-decoration: none; }
         .call-btn { flex: 1; background: #0984e3; color: white; padding: 15px; border-radius: 50%; text-align: center; font-weight: bold; }
 
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #2d3436; color: white; display: flex; justify-content: space-around; padding: 15px 0; z-index: 1000; }
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #2d3436; color: white; display: flex; justify-content: space-around; padding: 15px 0; z-index: 1000; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="5.png" class="logo" alt="Logo">
+    <img src="6.png" class="logo" alt="Logo">
     <h1 style="color: #2d3436; margin: 10px 0 0;">LEGEND PARTY</h1>
-    <div class="slogan">We will make it an unforgettable memory!</div>
+    <div class="slogan">We make fun memories!</div>
 </header>
 
 <div id="storeSection">
-    <div class="section-title">🎪 Characters Store 🎪</div>
+    <div class="section-title">🎪 Our Services 🎪</div>
     <div class="grid" id="menu"></div>
 </div>
 
 <div id="packageSection" style="display:none;">
-    <div class="section-title">🎁 Packages 🎁</div>
-    <div class="pkg">Standard Package</div>
+    <div class="section-title">🎁 Our Packages 🎁</div>
+    <div class="pkg">Standard (العادي)</div>
     <div class="pkg vip">VIP Package</div>
     <div class="pkg legend">LEGEND PARTY Package</div>
 </div>
@@ -69,15 +73,15 @@
     function showStore() { document.getElementById('storeSection').style.display='block'; document.getElementById('packageSection').style.display='none'; }
     function showPackages() { document.getElementById('storeSection').style.display='none'; document.getElementById('packageSection').style.display='block'; }
 
-    // الترتيب الجديد حسب طلبك
     const store = [
-        { en: "FOAM PARTY", img: "17.jpg" }, // ثابت
-        { en: "BIRTHDAY", img: "20.jpg" },   // ثابت
-        { en: "MASCOTS", img: "1.jpg" },     // جديد
-        { en: "CLOWN", img: "2.jpg" },       // جديد
-        { en: "ENGAGEMENT", img: "3.jpg" },  // جديد
-        { en: "AFRICAN SHOW", img: "4.jpg" },// جديد
-        { en: "JUMPERS", img: "5.jpg" }      // جديد
+        { en: "FOAM PARTY", img: "7.jpg" },
+        { en: "BIRTHDAY", img: "8.jpg" },
+        { en: "MAGICIAN", img: "9.jpg" },
+        { en: "MASCOTS", img: "1.jpg" },
+        { en: "CLOWN", img: "2.jpg" },
+        { en: "ENGAGEMENT", img: "3.jpg" },
+        { en: "AFRICAN & NUBIAN", img: "4.jpg" },
+        { en: "JUMPERS", img: "5.jpg" }
     ];
 
     const menu = document.getElementById('menu');
