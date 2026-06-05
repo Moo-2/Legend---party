@@ -3,39 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legend Party - عالم البهجة</title>
+    <title>Legend Party - Professional Services</title>
     <style>
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8f9fa; color: #333; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        header { text-align: center; padding: 30px; background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; border-radius: 20px; margin-bottom: 30px; }
         
-        /* الهيدر الاحترافي */
-        header { background: linear-gradient(135deg, #6e8efb, #a777e3); color: white; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .section-header { text-align: center; margin-top: 40px; margin-bottom: 20px; }
+        .section-header h2 { font-size: 24px; color: #2a5298; margin: 0; }
+        .section-header p { font-size: 14px; color: #666; margin: 5px 0; font-weight: 300; }
         
-        /* المعرض */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; padding: 20px; }
-        .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; transition: transform 0.3s; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .gallery img:hover { transform: scale(1.05); }
-
-        /* زر التواصل */
-        .btn-whatsapp { display: block; width: 250px; margin: 30px auto; padding: 15px; background-color: #25D366; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+        .gallery img { width: 100%; height: 160px; object-fit: cover; border-radius: 15px; border: 3px solid #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        .cta-btn { display: block; width: 90%; max-width: 300px; margin: 50px auto; padding: 15px; background: #25D366; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 20px; }
+        .cta-sub { display: block; text-align: center; font-size: 16px; color: #555; margin-top: -40px; margin-bottom: 40px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Legend Party</h1>
-    <p>اجعل مناسبتك لا تُنسى</p>
+    <h1>LEGEND PARTY</h1>
+    <p>Professional Event Planning Services</p>
 </header>
 
-<div class="gallery" id="gallery"></div>
+<div id="sections"></div>
 
-<a href="https://wa.me/201148537547" class="btn-whatsapp">احجز حفلتك الآن 📞</a>
+<a href="https://wa.me/201148537547" class="cta-btn">Book Your Party Now</a>
+<span class="cta-sub">احجز معانا حفلتك</span>
 
 <script>
-    const images = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.jpg", "10.jpg", "11.jpg", "12.jpg"];
-    const gallery = document.getElementById('gallery');
-    images.forEach(imgName => {
-        gallery.innerHTML += `<img src="${imgName}" alt="Costume">`;
-    });
+    const data = {
+        "MASCOTS & BIG INFLATABLES 🎭": { id: "mascots", subtitle: "قسم مسكات ونفخ عملاقة", images: [] },
+        "ENGAGEMENT & PARTY 💍": { id: "engagement", subtitle: "قسم خطوبة وقراية فاتحة", images: [] },
+        "BIRTHDAY & SEBOO' 🎂": { id: "birthdays", subtitle: "قسم سبوع وأعياد ميلاد", images: [] },
+        "AFRICAN & NUBIAN SHOW 🥁": { id: "african", subtitle: "قسم شو أفريقي ونوبي", images: [] },
+        "FULL CLOWN SHOW 🤡": { id: "clowns", subtitle: "قسم كلاون كامل", images: [] },
+        "GIANT JUMPERS 🏰": { id: "jumpers", subtitle: "قسم نطاطات كبيرة", images: [] },
+        "FOAM PARTY 🫧": { id: "foam", subtitle: "قسم فوم بارتي كامل", images: [] }
+    };
+
+    const container = document.getElementById('sections');
+    for (let title in data) {
+        let section = data[title];
+        container.innerHTML += `
+            <div class="section-header">
+                <h2>${title}</h2>
+                <p>${section.subtitle}</p>
+            </div>
+            <div class="gallery" id="${section.id}"></div>
+        `;
+        
+        section.images.forEach(img => {
+            document.getElementById(section.id).innerHTML += `<img src="${img}">`;
+        });
+    }
 </script>
 
 </body>
