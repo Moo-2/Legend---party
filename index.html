@@ -3,85 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legend Party - Professional Catalog</title>
+    <title>Legend Party - The Fun Factory</title>
     <style>
-        body { font-family: 'Cairo', sans-serif; background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); margin: 0; padding: 15px; min-height: 100vh; }
-        header { text-align: center; padding: 40px 20px; background: #2a5298; color: white; border-radius: 30px; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        header h1 { margin: 0; font-size: 32px; letter-spacing: 2px; }
-        header p { margin: 10px 0 0; font-size: 16px; opacity: 0.9; }
+        /* خلفية مبهجة بستايل كرتوني */
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background: radial-gradient(circle, #fff7e6 0%, #ffeaa7 100%); 
+            margin: 0; padding-bottom: 100px; 
+        }
         
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .box { background: rgba(255, 255, 255, 0.9); padding: 12px; border-radius: 20px; text-align: center; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.4s; border: 2px solid white; }
-        .box:hover { transform: translateY(-8px); border-color: #FF6B6B; }
-        .box img { width: 100%; height: 130px; object-fit: cover; border-radius: 15px; }
-        .box h3 { font-size: 13px; margin: 12px 0 0; color: #2a5298; }
-        .box p { font-size: 11px; color: #555; margin: 5px 0; }
+        header { text-align: center; padding: 25px; background: #fff; border-bottom: 5px solid #ff7675; }
+        .logo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #ff7675; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        
+        .section-title { padding: 20px 15px; font-size: 20px; font-weight: bold; color: #d63031; text-align: center; }
+        
+        /* شبكة المتجر */
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px; }
+        .box { background: white; padding: 10px; border-radius: 20px; text-align: center; box-shadow: 0 8px 0 #fab1a0; transition: 0.3s; }
+        .box img { width: 100%; height: 110px; object-fit: cover; border-radius: 15px; }
+        
+        /* نظام البكيدجات الكرتوني */
+        .pkg-container { padding: 0 15px; }
+        .pkg { background: #74b9ff; color: white; padding: 15px; margin-bottom: 15px; border-radius: 20px; border: 3px dashed white; text-align: center; font-weight: bold; }
+        .pkg.vip { background: #fdcb6e; color: #2d3436; }
+        .pkg.legend { background: #e17055; }
 
-        .section-view { display: none; padding-bottom: 50px; }
-        .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
-        .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        
-        .whatsapp-btn { display: block; width: 85%; margin: 30px auto; padding: 15px; background: #25D366; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); line-height: 1.4; }
-        .whatsapp-btn span { display: block; font-size: 12px; font-weight: normal; }
-        .back-btn { display: block; padding: 15px; background: #FF6B6B; color: white; text-align: center; border-radius: 15px; margin-top: 30px; font-weight: bold; cursor: pointer; }
+        /* شريط التواصل */
+        .contact-bar { display: flex; gap: 10px; padding: 15px; }
+        .whatsapp-btn { flex: 3; background: #25D366; color: white; padding: 15px; border-radius: 50px; text-align: center; font-weight: bold; text-decoration: none; }
+        .call-btn { flex: 1; background: #0984e3; color: white; padding: 15px; border-radius: 50%; text-align: center; font-weight: bold; }
+
+        /* الشريط السفلي */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #2d3436; color: white; display: flex; justify-content: space-around; padding: 15px 0; z-index: 1000; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>LEGEND PARTY</h1>
-    <p>سوف نجعلها ذكرى لا تُنسى !</p>
+    <img src="5.png" class="logo" alt="Logo">
+    <h1 style="color: #d63031;">LEGEND PARTY</h1>
 </header>
 
-<div class="grid" id="mainMenu"></div>
-
-<div id="sectionView" class="section-view">
-    <h2 id="viewTitle" style="text-align: center; color: #2a5298;"></h2>
-    <div class="gallery-grid" id="viewGallery"></div>
-    <div class="back-btn" onclick="goBack()">رجوع للقائمة الرئيسية</div>
+<!-- قسم المتجر -->
+<div id="storeSection">
+    <div class="section-title">🎪 متجر الشخصيات 🎪</div>
+    <div class="grid" id="menu"></div>
 </div>
 
-<a href="https://wa.me/201148537547" class="whatsapp-btn">
-    Book Your Party Now
-    <span>احجز حفلتك الآن</span>
-</a>
+<!-- قسم البكيدجات -->
+<div id="packageSection" style="display:none;">
+    <div class="section-title">🎁 باقات الحفلات الاحترافية 🎁</div>
+    <div class="pkg">العادي (Standard Package)</div>
+    <div class="pkg vip">VIP (Special Experience)</div>
+    <div class="pkg legend">LEGEND PARTY (Full Show)</div>
+</div>
+
+<!-- أزرار التواصل -->
+<div class="contact-bar">
+    <a href="https://wa.me/201148537547" class="whatsapp-btn">احجز حفلتك الآن 📱</a>
+    <a href="tel:01148537547" class="call-btn">📞</a>
+</div>
+
+<!-- الشريط السفلي -->
+<nav class="bottom-nav">
+    <div onclick="showStore()">🛒 المتجر</div>
+    <div onclick="showPackages()">🎁 البكيدجات</div>
+</nav>
 
 <script>
-    const data = {
-        foam: { en: "FOAM PARTY", ar: "فوم بارتي", cover: "17.jpg", images: ["17.jpg"] },
-        birthdays: { en: "BIRTHDAY & SEBOO'", ar: "سبوع وأعياد ميلاد", cover: "20.jpg", images: ["20.jpg"] },
-        clowns: { en: "FULL CLOWN SHOW", ar: "كلاون كامل", cover: "21.jpg", images: ["21.jpg"] },
-        mascots: { en: "MASCOTS", ar: "مسكات", cover: "22.jpg", images: ["22.jpg"] },
-        african: { en: "AFRICAN & NUBIAN SHOW", ar: "شو أفريقي ونوبي", cover: "23.jpg", images: ["23.jpg"] },
-        engagement: { en: "ENGAGEMENT & PARTY", ar: "خطوبة وقراية فاتحة", cover: "24.jpg", images: ["24.jpg"] },
-        jumpers: { en: "GIANT JUMPERS", ar: "نطاطات كبيرة", cover: "25.jpg", images: ["25.jpg"] }
-    };
+    function showStore() { document.getElementById('storeSection').style.display='block'; document.getElementById('packageSection').style.display='none'; }
+    function showPackages() { document.getElementById('storeSection').style.display='none'; document.getElementById('packageSection').style.display='block'; }
 
-    const menu = document.getElementById('mainMenu');
-    for (let id in data) {
-        menu.innerHTML += `
-            <div class="box" onclick="showSection('${id}')">
-                <img src="${data[id].cover}">
-                <h3>${data[id].en}</h3>
-                <p>${data[id].ar}</p>
-            </div>
-        `;
-    }
+    const store = [
+        { en: "FOAM PARTY", ar: "فوم بارتي", img: "17.jpg" },
+        { en: "BIRTHDAY", ar: "سبوع وأعياد ميلاد", img: "20.jpg" },
+        { en: "CLOWN", ar: "كلاون", img: "21.jpg" },
+        { en: "MASCOTS", ar: "مسكات", img: "22.jpg" },
+        { en: "AFRICAN", ar: "شو أفريقي", img: "23.jpg" },
+        { en: "ENGAGEMENT", ar: "خطوبة", img: "24.jpg" },
+        { en: "JUMPERS", ar: "نطاطات", img: "25.jpg" }
+    ];
 
-    function showSection(id) {
-        document.getElementById('mainMenu').style.display = 'none';
-        document.getElementById('sectionView').style.display = 'block';
-        const sec = data[id];
-        document.getElementById('viewTitle').innerText = sec.en;
-        const gal = document.getElementById('viewGallery');
-        gal.innerHTML = "";
-        sec.images.forEach(img => gal.innerHTML += `<img src="${img}">`);
-    }
-
-    function goBack() {
-        document.getElementById('mainMenu').style.display = 'grid';
-        document.getElementById('sectionView').style.display = 'none';
-    }
+    const menu = document.getElementById('menu');
+    store.forEach(item => {
+        menu.innerHTML += `<div class="box"><img src="${item.img}"><h3>${item.en}</h3><p>${item.ar}</p></div>`;
+    });
 </script>
 
 </body>
