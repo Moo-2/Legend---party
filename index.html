@@ -3,61 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legend Party</title>
+    <title>Legend Party - عالم البهجة</title>
     <style>
-        body { margin: 0; padding: 10px; font-family: sans-serif; background-color: #f4f4f4; }
-        h2 { text-align: center; color: #333; }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f8f9fa; color: #333; }
         
-        /* تنسيق المعرض */
-        .gallery { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 10px; 
-            justify-content: center; 
-        }
-        .gallery img { 
-            width: 45%; /* تصغير الصور لتناسب الشاشة */
-            max-width: 150px; /* تحديد أقصى عرض */
-            height: 150px; 
-            object-fit: cover; 
-            border-radius: 10px;
-            border: 2px solid white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+        /* الهيدر الاحترافي */
+        header { background: linear-gradient(135deg, #6e8efb, #a777e3); color: white; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        /* المعرض */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; padding: 20px; }
+        .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; transition: transform 0.3s; border: 3px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .gallery img:hover { transform: scale(1.05); }
 
-        /* تنسيق زر الواتساب */
-        .btn-whatsapp { 
-            display: block; 
-            width: 80%; 
-            margin: 30px auto; 
-            padding: 15px; 
-            background-color: #25D366; 
-            color: white; 
-            text-align: center; 
-            text-decoration: none; 
-            border-radius: 25px; 
-            font-weight: bold; 
-            font-size: 18px;
-        }
+        /* زر التواصل */
+        .btn-whatsapp { display: block; width: 250px; margin: 30px auto; padding: 15px; background-color: #25D366; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
     </style>
 </head>
 <body>
 
-    <h2>معرض صور Legend Party</h2>
-    <div class="gallery" id="gallery"></div>
+<header>
+    <h1>Legend Party</h1>
+    <p>اجعل مناسبتك لا تُنسى</p>
+</header>
 
-    <a href="https://wa.me/201148537547" class="btn-whatsapp">تواصل معنا عبر واتساب</a>
+<div class="gallery" id="gallery"></div>
 
-    <script>
-        const images = [
-            "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", 
-            "9.jpg", "10.jpg", "11.jpg", "12.jpg"
-        ];
-        
-        const gallery = document.getElementById('gallery');
-        images.forEach(imgName => {
-            gallery.innerHTML += '<img src="' + imgName + '">';
-        });
-    </script>
+<a href="https://wa.me/201148537547" class="btn-whatsapp">احجز حفلتك الآن 📞</a>
+
+<script>
+    const images = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.jpg", "10.jpg", "11.jpg", "12.jpg"];
+    const gallery = document.getElementById('gallery');
+    images.forEach(imgName => {
+        gallery.innerHTML += `<img src="${imgName}" alt="Costume">`;
+    });
+</script>
+
 </body>
 </html>
