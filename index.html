@@ -3,53 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legend Party - Catalog</title>
+    <title>Legend Party - Professional Catalog</title>
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #f0f2f5; margin: 0; padding: 15px; }
-        header { text-align: center; padding: 25px; background: linear-gradient(45deg, #FF6B6B, #FFD93D); color: white; border-radius: 25px; margin-bottom: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        body { font-family: 'Cairo', sans-serif; background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); margin: 0; padding: 15px; min-height: 100vh; }
+        header { text-align: center; padding: 40px 20px; background: #2a5298; color: white; border-radius: 30px; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        header h1 { margin: 0; font-size: 32px; letter-spacing: 2px; }
+        header p { margin: 10px 0 0; font-size: 16px; opacity: 0.9; }
         
-        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .box { background: rgba(255, 255, 255, 0.9); padding: 12px; border-radius: 20px; text-align: center; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.4s; border: 2px solid white; }
+        .box:hover { transform: translateY(-8px); border-color: #FF6B6B; }
+        .box img { width: 100%; height: 130px; object-fit: cover; border-radius: 15px; }
+        .box h3 { font-size: 14px; margin: 12px 0 0; color: #2a5298; }
+        .box p { font-size: 11px; color: #555; margin: 5px 0; }
+
+        .section-view { display: none; padding-bottom: 50px; }
+        .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
+        .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         
-        .box { background: white; padding: 20px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 2px solid transparent; }
-        .box:hover { border-color: #FF6B6B; transform: translateY(-5px); }
-        
-        .box h3 { margin: 0; font-size: 16px; color: #333; }
-        .box p { margin: 5px 0 0; font-size: 12px; color: #888; font-weight: 300; }
-        
-        .cta-btn { display: block; width: 100%; margin: 40px 0; padding: 15px; background: #25D366; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 18px; }
+        /* زر الواتساب */
+        .whatsapp-btn { display: block; width: 80%; margin: 30px auto; padding: 15px; background: #25D366; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
+        .back-btn { display: block; padding: 15px; background: #FF6B6B; color: white; text-align: center; border-radius: 15px; margin-top: 30px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>LEGEND PARTY</h1>
-    <p>Professional Event Planning Services</p>
+    <p>سوف نجعلها ذكرى لا تُنسى !</p>
 </header>
 
-<div class="grid-container" id="menu"></div>
+<div class="grid" id="mainMenu"></div>
 
-<a href="https://wa.me/201148537547" class="cta-btn">Book Your Party Now | احجز حفلتك الآن</a>
+<!-- القسم الخاص بالعرض -->
+<div id="sectionView" class="section-view">
+    <h2 id="viewTitle" style="text-align: center; color: #2a5298;"></h2>
+    <div class="gallery-grid" id="viewGallery"></div>
+    <div class="back-btn" onclick="goBack()">رجوع للقائمة الرئيسية</div>
+</div>
+
+<!-- زر الواتساب الثابت -->
+<a href="https://wa.me/201148537547" class="whatsapp-btn">تواصل معنا الآن 📞</a>
 
 <script>
-    const menu = [
-        { en: "MASCOTS & INFLATABLES 🎭", ar: "مسكات ونفخ عملاقة" },
-        { en: "ENGAGEMENT & PARTY 💍", ar: "خطوبة وقراية فاتحة" },
-        { en: "BIRTHDAY & SEBOO' 🎂", ar: "سبوع وأعياد ميلاد" },
-        { en: "AFRICAN & NUBIAN SHOW 🥁", ar: "شو أفريقي ونوبي" },
-        { en: "FULL CLOWN SHOW 🤡", ar: "كلاون كامل" },
-        { en: "GIANT JUMPERS 🏰", ar: "نطاطات كبيرة" },
-        { en: "FOAM PARTY 🫧", ar: "فوم بارتي" }
-    ];
+    const data = {
+        jumpers: { en: "GIANT JUMPERS", ar: "نطاطات كبيرة", cover: "13.jpg", images: ["13.jpg"] },
+        mascots: { en: "MASCOTS & INFLATABLES", ar: "مسكات ونفخ عملاقة", cover: "14.jpg", images: ["14.jpg"] },
+        african: { en: "AFRICAN & NUBIAN SHOW", ar: "شو أفريقي ونوبي", cover: "15.jpg", images: ["15.jpg"] },
+        clowns: { en: "FULL CLOWN SHOW", ar: "كلاون كامل", cover: "16.jpg", images: ["16.jpg"] },
+        foam: { en: "FOAM PARTY", ar: "فوم بارتي", cover: "17.jpg", images: ["17.jpg"] },
+        engagement: { en: "ENGAGEMENT & PARTY", ar: "خطوبة وقراية فاتحة", cover: "18.jpg", images: ["18.jpg"] }
+    };
 
-    const container = document.getElementById('menu');
-    menu.forEach(item => {
-        container.innerHTML += `
-            <div class="box">
-                <h3>${item.en}</h3>
-                <p>${item.ar}</p>
+    const menu = document.getElementById('mainMenu');
+    for (let id in data) {
+        menu.innerHTML += `
+            <div class="box" onclick="showSection('${id}')">
+                <img src="${data[id].cover}">
+                <h3>${data[id].en}</h3>
+                <p>${data[id].ar}</p>
             </div>
         `;
-    });
+    }
+
+    function showSection(id) {
+        document.getElementById('mainMenu').style.display = 'none';
+        document.getElementById('sectionView').style.display = 'block';
+        const sec = data[id];
+        document.getElementById('viewTitle').innerText = sec.en;
+        const gal = document.getElementById('viewGallery');
+        gal.innerHTML = "";
+        sec.images.forEach(img => gal.innerHTML += `<img src="${img}">`);
+    }
+
+    function goBack() {
+        document.getElementById('mainMenu').style.display = 'grid';
+        document.getElementById('sectionView').style.display = 'none';
+    }
 </script>
 
 </body>
