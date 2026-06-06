@@ -14,16 +14,16 @@
         .box { background: white; padding: 10px; border-radius: 20px; text-align: center; box-shadow: 0 8px 0 #fab1a0; cursor: pointer; }
         .box img { width: 100%; height: 110px; object-fit: cover; border-radius: 15px; }
         
-        /* معرض الصور الفرعي */
         #galleryView { padding: 15px; display: none; }
         .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
         .gallery-grid img { width: 100%; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
         .pkg { background: #74b9ff; color: white; padding: 20px; margin: 10px 15px; border-radius: 20px; text-align: center; font-weight: bold; border: 3px dashed white; }
         .contact-bar { display: flex; gap: 10px; padding: 0 15px 10px 15px; position: fixed; bottom: 80px; width: 90%; z-index: 999; }
-        .whatsapp-btn { flex: 3; background: #25D366; color: white; padding: 12px; border-radius: 50px; text-align: center; font-weight: bold; text-decoration: none; }
-        .call-btn { flex: 1; background: #0984e3; color: white; padding: 12px; border-radius: 50%; text-align: center; font-weight: bold; text-decoration: none; }
+        .whatsapp-btn { flex: 3; background: #25D366; color: white; padding: 12px; border-radius: 50px; text-align: center; font-weight: bold; text-decoration: none; box-shadow: 0 4px 0 #128c7e; }
+        .call-btn { flex: 1; background: #0984e3; color: white; padding: 12px; border-radius: 50%; text-align: center; font-weight: bold; text-decoration: none; box-shadow: 0 4px 0 #0773c3; }
         .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #2d3436; color: white; display: flex; justify-content: space-around; padding: 15px 0; z-index: 1000; font-weight: bold; }
+        .nav-item { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -43,13 +43,13 @@
     <div id="galleryView">
         <div class="section-title" id="galleryTitle"></div>
         <div class="gallery-grid" id="galleryImages"></div>
-        <button onclick="closeGallery()" style="width:100%; padding:15px; margin-top:20px; background:#ff7675; color:white; border:none; border-radius:15px;">Back to Store</button>
+        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#ff7675; color:white; border:none; border-radius:15px; font-weight:bold;">Back to Store</button>
     </div>
 </div>
 
 <div id="salesSection" style="display:none;">
     <div class="section-title">🛍️ SALES SHOP 🛍️</div>
-    <div style="background:#a29bfe; color:white; padding:40px; margin:15px; border-radius:30px; text-align:center;">🎭 MASCOTS & CLOWNS<br>For Sale</div>
+    <div style="background:#a29bfe; color:white; padding:40px; margin:15px; border-radius:30px; text-align:center; font-weight:bold; font-size: 20px;">🎭 MASCOTS & CLOWNS<br>For Sale</div>
 </div>
 
 <div id="packageSection" style="display:none;">
@@ -71,9 +71,9 @@
 </nav>
 
 <script>
+    // جميع صور المسكات من 11 إلى 27 بصيغة jpg
     const galleryData = {
-        "MASCOTS": ["10.jpg", "12.jpg", "13.jpg", "15.jpg"],
-        "CLOWN": ["11.jpg", "14.jpg", "17.jpg"]
+        "MASCOTS": ["11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg", "20.jpg", "21.jpg", "22.jpg", "23.jpg", "24.jpg", "25.jpg", "26.jpg", "27.jpg"]
     };
 
     function showSection(id) {
@@ -92,14 +92,12 @@
         galleryData[name].forEach(src => { imgContainer.innerHTML += `<img src="${src}">`; });
     }
 
-    function closeGallery() { showSection('storeSection'); }
-
     const store = [
         { en: "FOAM PARTY", img: "7.jpg" },
         { en: "BIRTHDAY", img: "8.jpg" },
         { en: "MAGICIAN", img: "9.jpg" },
-        { en: "MASCOTS", img: "1.jpg", gallery: true },
-        { en: "CLOWN", img: "16.jpg", gallery: true },
+        { en: "MASCOTS", img: "1.jpg", gallery: true }, // معرض المسكات الجديد
+        { en: "CLOWN", img: "29.jpg" },                 // صورة الكلاون الجديدة رقم 29
         { en: "ENGAGEMENT", img: "3.jpg" },
         { en: "AFRICAN & NUBIAN", img: "4.jpg" },
         { en: "JUMPERS", img: "5.jpg" }
