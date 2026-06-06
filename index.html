@@ -14,7 +14,7 @@
         .box { background: white; padding: 10px; border-radius: 20px; text-align: center; box-shadow: 0 8px 0 #fab1a0; cursor: pointer; }
         .box img { width: 100%; height: 110px; object-fit: cover; border-radius: 15px; }
         
-        #galleryView { padding: 15px; display: none; }
+        #galleryView, #salesView { padding: 15px; display: none; }
         .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
         .gallery-grid img { width: 100%; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
@@ -43,14 +43,14 @@
     <div id="galleryView">
         <div class="section-title" id="galleryTitle"></div>
         <div class="gallery-grid" id="galleryImages"></div>
-        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#ff7675; color:white; border:none; border-radius:15px; font-weight:bold;">Back to Store</button>
+        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#ff7675; color:white; border:none; border-radius:15px; font-weight:bold;">Back</button>
     </div>
-</div>
 
-<div id="salesSection" style="display:none;">
-    <div class="section-title">🛍️ SALES SHOP 🛍️</div>
-    <div class="gallery-grid" id="salesImages"></div>
-    <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#a29bfe; color:white; border:none; border-radius:15px; font-weight:bold;">Back to Store</button>
+    <div id="salesView">
+        <div class="section-title">🛍️ SALES SHOP 🛍️</div>
+        <div class="gallery-grid" id="salesImages"></div>
+        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#a29bfe; color:white; border:none; border-radius:15px; font-weight:bold;">Back</button>
+    </div>
 </div>
 
 <div id="packageSection" style="display:none;">
@@ -67,7 +67,7 @@
 
 <nav class="bottom-nav">
     <div class="nav-item" onclick="showSection('storeSection')">🛒 Store</div>
-    <div class="nav-item" onclick="showSection('salesSection')">🏷️ Sales</div>
+    <div class="nav-item" onclick="showSection('salesView')">🏷️ Sales</div>
     <div class="nav-item" onclick="showSection('packageSection')">🎁 Packages</div>
 </nav>
 
@@ -81,14 +81,14 @@
 
     function showSection(id) {
         document.getElementById('storeSection').style.display = (id === 'storeSection') ? 'block' : 'none';
-        document.getElementById('salesSection').style.display = (id === 'salesSection') ? 'block' : 'none';
         document.getElementById('packageSection').style.display = (id === 'packageSection') ? 'block' : 'none';
         document.getElementById('galleryView').style.display = 'none';
+        document.getElementById('salesView').style.display = (id === 'salesView') ? 'block' : 'none';
         
-        if(id === 'salesSection') {
-            const salesContainer = document.getElementById('salesImages');
-            salesContainer.innerHTML = "";
-            allSalesImages.forEach(src => { salesContainer.innerHTML += `<img src="${src}">`; });
+        if(id === 'salesView') {
+            const container = document.getElementById('salesImages');
+            container.innerHTML = "";
+            allSalesImages.forEach(src => { container.innerHTML += `<img src="${src}">`; });
         }
     }
 
@@ -96,9 +96,9 @@
         document.getElementById('storeSection').style.display = 'none';
         document.getElementById('galleryView').style.display = 'block';
         document.getElementById('galleryTitle').innerText = name;
-        const imgContainer = document.getElementById('galleryImages');
-        imgContainer.innerHTML = "";
-        galleryData[name].forEach(src => { imgContainer.innerHTML += `<img src="${src}">`; });
+        const container = document.getElementById('galleryImages');
+        container.innerHTML = "";
+        galleryData[name].forEach(src => { container.innerHTML += `<img src="${src}">`; });
     }
 
     const store = [
