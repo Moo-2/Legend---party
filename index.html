@@ -49,7 +49,8 @@
 
 <div id="salesSection" style="display:none;">
     <div class="section-title">🛍️ SALES SHOP 🛍️</div>
-    <div style="background:#a29bfe; color:white; padding:40px; margin:15px; border-radius:30px; text-align:center; font-weight:bold; font-size: 20px;">🎭 MASCOTS & CLOWNS<br>For Sale</div>
+    <div class="gallery-grid" id="salesImages"></div>
+    <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#a29bfe; color:white; border:none; border-radius:15px; font-weight:bold;">Back to Store</button>
 </div>
 
 <div id="packageSection" style="display:none;">
@@ -71,16 +72,24 @@
 </nav>
 
 <script>
-    // جميع صور المسكات من 11 إلى 27 بصيغة jpg
     const galleryData = {
-        "MASCOTS": ["11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg", "20.jpg", "21.jpg", "22.jpg", "23.jpg", "24.jpg", "25.jpg", "26.jpg", "27.jpg"]
+        "MASCOTS": ["11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg"],
+        "CLOWN": ["18.jpg", "19.jpg", "20.jpg", "21.jpg"]
     };
+
+    const allSalesImages = ["11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg", "20.jpg", "21.jpg"];
 
     function showSection(id) {
         document.getElementById('storeSection').style.display = (id === 'storeSection') ? 'block' : 'none';
         document.getElementById('salesSection').style.display = (id === 'salesSection') ? 'block' : 'none';
         document.getElementById('packageSection').style.display = (id === 'packageSection') ? 'block' : 'none';
         document.getElementById('galleryView').style.display = 'none';
+        
+        if(id === 'salesSection') {
+            const salesContainer = document.getElementById('salesImages');
+            salesContainer.innerHTML = "";
+            allSalesImages.forEach(src => { salesContainer.innerHTML += `<img src="${src}">`; });
+        }
     }
 
     function openGallery(name) {
@@ -96,8 +105,8 @@
         { en: "FOAM PARTY", img: "7.jpg" },
         { en: "BIRTHDAY", img: "8.jpg" },
         { en: "MAGICIAN", img: "9.jpg" },
-        { en: "MASCOTS", img: "1.jpg", gallery: true }, // معرض المسكات الجديد
-        { en: "CLOWN", img: "29.jpg" },                 // صورة الكلاون الجديدة رقم 29
+        { en: "MASCOTS", img: "11.jpg", gallery: true },
+        { en: "CLOWN", img: "18.jpg", gallery: true },
         { en: "ENGAGEMENT", img: "3.jpg" },
         { en: "AFRICAN & NUBIAN", img: "4.jpg" },
         { en: "JUMPERS", img: "5.jpg" }
