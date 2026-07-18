@@ -1,165 +1,61 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legend Party - Professional Gallery</title>
+    <title>Legend Party</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #fdfcfb 0%, #ffeaa7 100%); margin: 0; padding-bottom: 150px; background-image: url('30.jpg'); background-repeat: repeat-y; background-size: 80px auto; background-position: right top; }
-        header { text-align: center; padding: 20px; background: rgba(255,255,255,0.9); border-bottom: 5px solid #ff7675; }
-        .logo { width: 100px; height: 100px; border-radius: 50%; border: 4px solid #ff7675; }
-        .section-title { padding: 20px 15px; font-size: 22px; font-weight: bold; color: #d63031; text-align: center; }
-        
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 15px; }
-        .box { background: white; padding: 10px; border-radius: 20px; text-align: center; box-shadow: 0 8px 0 #fab1a0; cursor: pointer; }
-        .box img { width: 100%; height: 110px; object-fit: cover; border-radius: 15px; }
-        
-        #galleryView, #salesView { padding: 15px; display: none; }
-        .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        .gallery-grid img { width: 100%; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-
-        /* تنسيق الباكيدجات بالصور */
-        .pkg-container { margin: 15px; padding: 15px; border-radius: 20px; border: 3px dashed white; }
-        .pkg-title { font-weight: bold; font-size: 18px; margin-bottom: 10px; text-align: center; }
-        .pkg-images { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; justify-content: center; }
-        .pkg-images img { width: 100%; height: auto; max-height: 200px; object-fit: cover; border-radius: 10px; }
-        .pkg-single-img { display: block; margin: 0 auto; width: 80%; border-radius: 10px; }
-
-        .contact-bar { display: flex; gap: 10px; padding: 0 15px 10px 15px; position: fixed; bottom: 80px; width: 90%; z-index: 999; }
-        .whatsapp-btn { flex: 3; background: #25D366; color: white; padding: 12px; border-radius: 50px; text-align: center; font-weight: bold; text-decoration: none; box-shadow: 0 4px 0 #128c7e; }
-        .call-btn { flex: 1; background: #0984e3; color: white; padding: 12px; border-radius: 50%; text-align: center; font-weight: bold; text-decoration: none; box-shadow: 0 4px 0 #0773c3; }
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #2d3436; color: white; display: flex; justify-content: space-around; padding: 15px 0; z-index: 1000; font-weight: bold; }
-        .nav-item { cursor: pointer; }
+        body { font-family: sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .card { background: white; padding: 10px; border-radius: 10px; text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 100px; object-fit: cover; border-radius: 5px; }
+        #gallery { display: none; padding-top: 20px; }
+        .back-btn { display: block; width: 100%; padding: 10px; background: #333; color: white; border: none; border-radius: 5px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-<header>
-    <!-- تأكد من وجود صورة اللوجو باسم 6.png أو ضع الاسم الصحيح -->
-    <img src="6.png" class="logo" alt="Logo" onerror="this.style.display='none'">
-    <h1 style="color: #2d3436; margin: 5px 0;">LEGEND PARTY</h1>
-    <div style="color: #d63031; font-style: italic;">We make fun memories!</div>
-</header>
-
-<div id="mainContent">
-    <div id="storeSection">
-        <div class="section-title">🎪 Our Services 🎪</div>
-        <div class="grid" id="menu"></div>
-    </div>
-    
-    <div id="galleryView">
-        <div class="section-title" id="galleryTitle"></div>
-        <div class="gallery-grid" id="galleryImages"></div>
-        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#ff7675; color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">Back to Store</button>
-    </div>
-
-    <div id="salesView">
-        <div class="section-title">🛍️ SALES SHOP 🛍️</div>
-        <div class="gallery-grid" id="salesImages"></div>
-        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#a29bfe; color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">Back to Store</button>
-    </div>
+<div id="home">
+    <h2 style="text-align:center;">Legend Party</h2>
+    <div class="grid" id="menu"></div>
 </div>
 
-<div id="packageSection" style="display:none;">
-    <div class="section-title">🎁 Our Packages 🎁</div>
-    
-    <!-- الباكيدج العادي -->
-    <div class="pkg-container" style="background:#74b9ff; color:white;">
-        <div class="pkg-title">Standard Package (العادي)</div>
-        <div class="pkg-images">
-            <img src="31.jpg" alt="Standard Package 1"> 
-            <img src="34.jpg" alt="Standard Package 2">
-        </div>
-    </div>
-    
-    <!-- باكدج ال VIP -->
-    <div class="pkg-container" style="background:#fdcb6e; color:white;">
-        <div class="pkg-title">VIP Package</div>
-        <img src="33.jpg" class="pkg-single-img" alt="VIP Package">
-    </div>
-    
-    <!-- باكيدج ليجيند بارتي -->
-    <div class="pkg-container" style="background:#e17055; color:white;">
-        <div class="pkg-title">LEGEND PARTY Package</div>
-        <img src="32.jpg" class="pkg-single-img" alt="Legend Party Package">
-    </div>
+<div id="gallery">
+    <button class="back-btn" onclick="goBack()">رجوع</button>
+    <div class="grid" id="pics"></div>
 </div>
-
-<div class="contact-bar">
-    <a href="https://wa.me/201148537547" class="whatsapp-btn">Book Now 📱</a>
-    <a href="tel:01148537547" class="call-btn">📞</a>
-</div>
-
-<nav class="bottom-nav">
-    <div class="nav-item" onclick="showSection('storeSection')">🛒 Store</div>
-    <div class="nav-item" onclick="showSection('salesView')">🏷️ Sales</div>
-    <div class="nav-item" onclick="showSection('packageSection')">🎁 Packages</div>
-</nav>
 
 <script>
-    // توزيع الصور بداخل الأقسام كما حددت تماماً
-    const galleryData = {
-        "ENGAGEMENT": ["22.jpg", "23.jpg", "24.jpg", "25.jpg"],
-        "MASCOTS": ["26.jpg", "27.jpg"],
-        "JUMPERS": ["28.jpg", "30.jpg"],
-        "FOAM PARTY": ["35.jpg", "36.jpg"],
-        "AFRICAN & NUBIAN": ["37.jpg", "38.jpg"]
+    const data = {
+        "اينجيمنت": ["22.jpg", "23.jpg", "24.jpg", "25.jpg"],
+        "المسكات": ["26.jpg", "27.jpg"],
+        "الجمب": ["28.jpg", "30.jpg"],
+        "باكيدج عادي": ["31.jpg", "34.jpg"],
+        "باكيدج ليجيند": ["32.jpg"],
+        "باكيدج VIP": ["33.jpg"],
+        "فوم بارتي": ["35.jpg", "36.jpg"],
+        "افريقي ونوبي": ["37.jpg", "38.jpg"]
     };
 
-    // جميع صور المعارض ليتم عرضها في قسم السيلز (حسب الترتيب السابق)
-    const allSalesImages = [
-        "22.jpg", "23.jpg", "24.jpg", "25.jpg", 
-        "26.jpg", "27.jpg", 
-        "28.jpg", "30.jpg", 
-        "35.jpg", "36.jpg", 
-        "37.jpg", "38.jpg"
-    ];
-
-    function showSection(id) {
-        document.getElementById('storeSection').style.display = (id === 'storeSection') ? 'block' : 'none';
-        document.getElementById('packageSection').style.display = (id === 'packageSection') ? 'block' : 'none';
-        document.getElementById('galleryView').style.display = 'none';
-        document.getElementById('salesView').style.display = (id === 'salesView') ? 'block' : 'none';
-        
-        if(id === 'salesView') {
-            const container = document.getElementById('salesImages');
-            container.innerHTML = "";
-            allSalesImages.forEach(src => { 
-                container.innerHTML += `<img src="${src}" alt="Sale Item">`; 
-            });
-        }
+    function showGallery(name) {
+        document.getElementById('home').style.display = 'none';
+        document.getElementById('gallery').style.display = 'block';
+        const pics = document.getElementById('pics');
+        pics.innerHTML = '';
+        data[name].forEach(img => {
+            pics.innerHTML += `<div class="card"><img src="${img}"></div>`;
+        });
     }
 
-    function openGallery(name) {
-        document.getElementById('storeSection').style.display = 'none';
-        document.getElementById('galleryView').style.display = 'block';
-        document.getElementById('galleryTitle').innerText = name;
-        const container = document.getElementById('galleryImages');
-        container.innerHTML = "";
-        
-        if(galleryData[name]) {
-            galleryData[name].forEach(src => { 
-                container.innerHTML += `<img src="${src}" alt="${name} Image">`; 
-            });
-        }
+    function goBack() {
+        document.getElementById('home').style.display = 'block';
+        document.getElementById('gallery').style.display = 'none';
     }
-
-    // بناء الصفحة الرئيسية باستخدام الصورة الأولى من كل قسم كغلاف
-    const store = [
-        { en: "ENGAGEMENT", img: "22.jpg" },
-        { en: "MASCOTS", img: "26.jpg" },
-        { en: "JUMPERS", img: "28.jpg" },
-        { en: "FOAM PARTY", img: "35.jpg" },
-        { en: "AFRICAN & NUBIAN", img: "37.jpg" }
-    ];
 
     const menu = document.getElementById('menu');
-    store.forEach(item => {
-        menu.innerHTML += `<div class="box" onclick="openGallery('${item.en}')">
-            <img src="${item.img}" alt="${item.en}">
-            <h3>${item.en}</h3>
-        </div>`;
-    });
+    for (let key in data) {
+        menu.innerHTML += `<div class="card" onclick="showGallery('${key}')"><img src="${data[key][0]}"><h3>${key}</h3></div>`;
+    }
 </script>
 </body>
 </html>
