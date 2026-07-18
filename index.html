@@ -18,7 +18,13 @@
         .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
         .gallery-grid img { width: 100%; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-        .pkg { background: #74b9ff; color: white; padding: 20px; margin: 10px 15px; border-radius: 20px; text-align: center; font-weight: bold; border: 3px dashed white; }
+        /* تنسيق الباكيدجات بالصور */
+        .pkg-container { margin: 15px; padding: 15px; border-radius: 20px; border: 3px dashed white; }
+        .pkg-title { font-weight: bold; font-size: 18px; margin-bottom: 10px; text-align: center; }
+        .pkg-images { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; justify-content: center; }
+        .pkg-images img { width: 100%; height: auto; max-height: 200px; object-fit: cover; border-radius: 10px; }
+        .pkg-single-img { display: block; margin: 0 auto; width: 80%; border-radius: 10px; }
+
         .contact-bar { display: flex; gap: 10px; padding: 0 15px 10px 15px; position: fixed; bottom: 80px; width: 90%; z-index: 999; }
         .whatsapp-btn { flex: 3; background: #25D366; color: white; padding: 12px; border-radius: 50px; text-align: center; font-weight: bold; text-decoration: none; box-shadow: 0 4px 0 #128c7e; }
         .call-btn { flex: 1; background: #0984e3; color: white; padding: 12px; border-radius: 50%; text-align: center; font-weight: bold; text-decoration: none; box-shadow: 0 4px 0 #0773c3; }
@@ -29,7 +35,8 @@
 <body>
 
 <header>
-    <img src="6.png" class="logo" alt="Logo">
+    <!-- تأكد من وجود صورة اللوجو باسم 6.png أو ضع الاسم الصحيح -->
+    <img src="6.png" class="logo" alt="Logo" onerror="this.style.display='none'">
     <h1 style="color: #2d3436; margin: 5px 0;">LEGEND PARTY</h1>
     <div style="color: #d63031; font-style: italic;">We make fun memories!</div>
 </header>
@@ -43,21 +50,39 @@
     <div id="galleryView">
         <div class="section-title" id="galleryTitle"></div>
         <div class="gallery-grid" id="galleryImages"></div>
-        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#ff7675; color:white; border:none; border-radius:15px; font-weight:bold;">Back</button>
+        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#ff7675; color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">Back to Store</button>
     </div>
 
     <div id="salesView">
         <div class="section-title">🛍️ SALES SHOP 🛍️</div>
         <div class="gallery-grid" id="salesImages"></div>
-        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#a29bfe; color:white; border:none; border-radius:15px; font-weight:bold;">Back</button>
+        <button onclick="showSection('storeSection')" style="width:100%; padding:15px; margin-top:20px; background:#a29bfe; color:white; border:none; border-radius:15px; font-weight:bold; cursor:pointer;">Back to Store</button>
     </div>
 </div>
 
 <div id="packageSection" style="display:none;">
     <div class="section-title">🎁 Our Packages 🎁</div>
-    <div class="pkg">Standard (العادي)</div>
-    <div class="pkg" style="background:#fdcb6e;">VIP Package</div>
-    <div class="pkg" style="background:#e17055;">LEGEND PARTY Package</div>
+    
+    <!-- الباكيدج العادي -->
+    <div class="pkg-container" style="background:#74b9ff; color:white;">
+        <div class="pkg-title">Standard Package (العادي)</div>
+        <div class="pkg-images">
+            <img src="31.jpg" alt="Standard Package 1"> 
+            <img src="34.jpg" alt="Standard Package 2">
+        </div>
+    </div>
+    
+    <!-- باكدج ال VIP -->
+    <div class="pkg-container" style="background:#fdcb6e; color:white;">
+        <div class="pkg-title">VIP Package</div>
+        <img src="33.jpg" class="pkg-single-img" alt="VIP Package">
+    </div>
+    
+    <!-- باكيدج ليجيند بارتي -->
+    <div class="pkg-container" style="background:#e17055; color:white;">
+        <div class="pkg-title">LEGEND PARTY Package</div>
+        <img src="32.jpg" class="pkg-single-img" alt="Legend Party Package">
+    </div>
 </div>
 
 <div class="contact-bar">
@@ -72,12 +97,23 @@
 </nav>
 
 <script>
+    // توزيع الصور بداخل الأقسام كما حددت تماماً
     const galleryData = {
-        "MASCOTS": ["11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg"],
-        "CLOWN": ["18.jpg", "19.jpg", "20.jpg", "21.jpg"]
+        "ENGAGEMENT": ["22.jpg", "23.jpg", "24.jpg", "25.jpg"],
+        "MASCOTS": ["26.jpg", "27.jpg"],
+        "JUMPERS": ["28.jpg", "30.jpg"],
+        "FOAM PARTY": ["35.jpg", "36.jpg"],
+        "AFRICAN & NUBIAN": ["37.jpg", "38.jpg"]
     };
 
-    const allSalesImages = ["11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg", "20.jpg", "21.jpg"];
+    // جميع صور المعارض ليتم عرضها في قسم السيلز (حسب الترتيب السابق)
+    const allSalesImages = [
+        "22.jpg", "23.jpg", "24.jpg", "25.jpg", 
+        "26.jpg", "27.jpg", 
+        "28.jpg", "30.jpg", 
+        "35.jpg", "36.jpg", 
+        "37.jpg", "38.jpg"
+    ];
 
     function showSection(id) {
         document.getElementById('storeSection').style.display = (id === 'storeSection') ? 'block' : 'none';
@@ -88,7 +124,9 @@
         if(id === 'salesView') {
             const container = document.getElementById('salesImages');
             container.innerHTML = "";
-            allSalesImages.forEach(src => { container.innerHTML += `<img src="${src}">`; });
+            allSalesImages.forEach(src => { 
+                container.innerHTML += `<img src="${src}" alt="Sale Item">`; 
+            });
         }
     }
 
@@ -98,24 +136,29 @@
         document.getElementById('galleryTitle').innerText = name;
         const container = document.getElementById('galleryImages');
         container.innerHTML = "";
-        galleryData[name].forEach(src => { container.innerHTML += `<img src="${src}">`; });
+        
+        if(galleryData[name]) {
+            galleryData[name].forEach(src => { 
+                container.innerHTML += `<img src="${src}" alt="${name} Image">`; 
+            });
+        }
     }
 
+    // بناء الصفحة الرئيسية باستخدام الصورة الأولى من كل قسم كغلاف
     const store = [
-        { en: "FOAM PARTY", img: "7.jpg" },
-        { en: "BIRTHDAY", img: "8.jpg" },
-        { en: "MAGICIAN", img: "9.jpg" },
-        { en: "MASCOTS", img: "11.jpg", gallery: true },
-        { en: "CLOWN", img: "18.jpg", gallery: true },
-        { en: "ENGAGEMENT", img: "3.jpg" },
-        { en: "AFRICAN & NUBIAN", img: "4.jpg" },
-        { en: "JUMPERS", img: "5.jpg" }
+        { en: "ENGAGEMENT", img: "22.jpg" },
+        { en: "MASCOTS", img: "26.jpg" },
+        { en: "JUMPERS", img: "28.jpg" },
+        { en: "FOAM PARTY", img: "35.jpg" },
+        { en: "AFRICAN & NUBIAN", img: "37.jpg" }
     ];
 
     const menu = document.getElementById('menu');
     store.forEach(item => {
-        let onClick = item.gallery ? `onclick="openGallery('${item.en}')"` : "";
-        menu.innerHTML += `<div class="box" ${onClick}><img src="${item.img}"><h3>${item.en}</h3></div>`;
+        menu.innerHTML += `<div class="box" onclick="openGallery('${item.en}')">
+            <img src="${item.img}" alt="${item.en}">
+            <h3>${item.en}</h3>
+        </div>`;
     });
 </script>
 </body>
